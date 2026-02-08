@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="واحد مرقي - One Morqi | مطعم متخصص في المرقة الشهية">
+    <title>واحد مرقي | One Morqi - مطعم</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2691E;
+            --accent-color: #FFD700;
+            --light-bg: #F5E6D3;
+            --text-dark: #2C1810;
+            --text-light: #5C4033;
+            --white: #FFFFFF;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        html[lang="en"] {
+            direction: ltr;
+        }
+
+        html[lang="en"] body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html[lang="ar"] body {
+            font-family: 'Cairo', 'Droid Arabic Kufi', 'Arabic Typesetting', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============ HEADER & NAVIGATION ============ */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "🍲";
+            font-size: 2rem;
+        }
+
+        .language-toggle {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .language-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 4rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-button:hover {
+            background-color: #FFC700;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button::before {
+            content: "📱 ";
+        }
+
+        /* ============ SERVICES SECTION ============ */
+        .services {
+            padding: 3rem 1.5rem;
+            background-color: var(--white);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-color);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* ============ MENU SECTION ============ */
+        .menu {
+            padding: 3rem 1.5rem;
+            background-color: var(--light-bg);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .filter-btn {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .menu-item-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .menu-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .menu-item-image-fallback {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .menu-item-content {
+            padding: 1.5rem;
+        }
+
+        .menu-item-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            min-height: 40px;
+        }
+
+        .menu-item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #E0E0E0;
+        }
+
+        .menu-item-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .menu-item-btn {
+            background-color: var(--accent-color);
+            color: var(--text-dark);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+        }
+
+        .menu-item-btn:hover {
+            background-color: #FFC700;
+            transform: scale(1.05);
+        }
+
+        /* ============ LOCATION SECTION ============ */
+        .location {
+            padding: 3rem 1.5rem;
+            background-color: var(--white);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .location-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .location-info p {
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .location-info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .location-info a:hover {
+            color: var(--primary-color);
+        }
+
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            height: 300px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ============ STICKY WHATSAPP BUTTON ============ */
+        .sticky-whatsapp {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            z-index: 99;
+            text-decoration: none;
+        }
+
+        .sticky-whatsapp:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        html[lang="ar"] .sticky-whatsapp {
+            left: auto;
+            right: 2rem;
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        /* ============ RESPONSIVE DESIGN ============ */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .location-content {
+                grid-template-columns: 1fr;
+            }
+
+            .map-container {
+                height: 250px;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .sticky-whatsapp {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 1rem;
+                left: 1rem;
+            }
+
+            html[lang="ar"] .sticky-whatsapp {
+                right: 1rem;
+                left: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .menu {
+                padding: 2rem 1rem;
+            }
+
+            .services {
+                padding: 2rem 1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .menu-filters {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .menu-item-image {
+                height: 150px;
+            }
+
+            .location {
+                padding: 2rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* ============ ANIMATION ============ */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .menu-item {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        .menu-item:nth-child(1) { animation-delay: 0.1s; }
+        .menu-item:nth-child(2) { animation-delay: 0.2s; }
+        .menu-item:nth-child(3) { animation-delay: 0.3s; }
+        .menu-item:nth-child(4) { animation-delay: 0.4s; }
+        .menu-item:nth-child(5) { animation-delay: 0.5s; }
+        .menu-item:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- ============ HEADER ============ -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo" id="logo">واحد مرقي</a>
+            <button class="language-toggle" id="languageToggle">EN | عربي</button>
+        </div>
+    </header>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 id="heroTitle">واحد مرقي</h1>
+            <p id="heroSubtitle">مرقة شهية وطعم لا ينسى</p>
+            <a href="#" class="cta-button" id="ctaButton">اطلب الآن</a>
+        </div>
+    </section>
+
+    <!-- ============ SERVICES SECTION ============ -->
+    <section class="services">
+        <h2 class="section-title" id="servicesTitle">خدماتنا</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🚚</div>
+                <h3 id="serviceDelivery">توصيل</h3>
+                <p id="serviceDeliveryDesc">توصيل سريع وآمن لباب منزلك</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📦</div>
+                <h3 id="serviceTakeaway">استلام</h3>
+                <p id="serviceTakeawayDesc">استلم طلبك بسرعة وسهولة</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚗</div>
+                <h3 id="serviceDrivethru">درايف ثرو</h3>
+                <p id="serviceDrivethruDesc">خدمة سريعة من سيارتك</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🍽️</div>
+                <h3 id="serviceDinein">تناول في المطعم</h3>
+                <p id="serviceDineinDesc">جلسة مريحة وأجواء عائلية</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ MENU SECTION ============ -->
+    <section class="menu">
+        <h2 class="section-title" id="menuTitle">القائمة</h2>
+        <div class="menu-filters" id="menuFilters"></div>
+        <div class="menu-grid" id="menuGrid"></div>
+    </section>
+
+    <!-- ============ LOCATION SECTION ============ -->
+    <section class="location">
+        <h2 class="section-title" id="locationTitle">موقعنا</h2>
+        <div class="location-content">
+            <div class="location-info">
+                <h3 id="locationHeading">عنواننا</h3>
+                <p id="locationAddress">الرياض، المملكة العربية السعودية</p>
+                <p id="locationPhone">📞 <a href="tel:+966562339793">+966 56 233 9793</a></p>
+                <p id="locationEmail">📧 <a href="mailto:info@onemorqi.com">info@onemorqi.com</a></p>
+                <p id="locationHours">🕐 من 10:00 صباحاً إلى 11:00 مساءً</p>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3625.4891157537327!2d46.6753!3d24.7136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f1d3d3d3d3d3d%3A0x0!2sRiyadh%2C%20Saudi%20Arabia!5e0!3m2!1sen!2ssa!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ STICKY WHATSAPP BUTTON ============ -->
+    <a href="#" class="sticky-whatsapp" id="stickyWhatsapp" title="Order on WhatsApp">💬</a>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+        <div class="footer-content">
+            <p id="footerText">© 2024 واحد مرقي | One Morqi. جميع الحقوق محفوظة.</p>
+            <div class="footer-links">
+                <a href="#" id="footerPrivacy">سياسة الخصوصية</a>
+                <a href="#" id="footerTerms">شروط الاستخدام</a>
+                <a href="#" id="footerContact">اتصل بنا</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============ LANGUAGE CONFIGURATION ============
+        // Store all static text in a JavaScript object for easy language switching
+        // This allows dynamic language switching without duplicating HTML
+        const translations = {
+            ar: {
+                logo: "واحد مرقي",
+                heroTitle: "واحد مرقي",
+                heroSubtitle: "مرقة شهية وطعم لا ينسى",
+                ctaButton: "📱 اطلب الآن",
+                servicesTitle: "خدماتنا",
+                serviceDelivery: "توصيل",
+                serviceDeliveryDesc: "توصيل سريع وآمن لباب منزلك",
+                serviceTakeaway: "استلام",
+                serviceTakeawayDesc: "استلم طلبك بسرعة وسهولة",
+                serviceDrivethru: "درايف ثرو",
+                serviceDrivethruDesc: "خدمة سريعة من سيارتك",
+                serviceDinein: "تناول في المطعم",
+                serviceDineinDesc: "جلسة مريحة وأجواء عائلية",
+                menuTitle: "القائمة",
+                locationTitle: "موقعنا",
+                locationHeading: "عنواننا",
+                locationAddress: "الرياض، المملكة العربية السعودية",
+                locationPhone: "📞",
+                locationEmail: "📧",
+                locationHours: "🕐 من 10:00 صباحاً إلى 11:00 مساءً",
+                footerText: "© 2024 واحد مرقي | One Morqi. جميع الحقوق محفوظة.",
+                footerPrivacy: "سياسة الخصوصية",
+                footerTerms: "شروط الاستخدام",
+                footerContact: "اتصل بنا",
+                allCategories: "الكل",
+                addToOrder: "أضف للطلب",
+                whatsappGreeting: "السلام عليكم ورحمة الله وبركاته 👋",
+                whatsappMessage: "أود أن أطلب من واحد مرقي:",
+            },
+            en: {
+                logo: "One Morqi",
+                heroTitle: "One Morqi",
+                heroSubtitle: "Delicious soup and unforgettable taste",
+                ctaButton: "📱 Order Now",
+                servicesTitle: "Our Services",
+                serviceDelivery: "Delivery",
+                serviceDeliveryDesc: "Fast and safe delivery to your door",
+                serviceTakeaway: "Takeaway",
+                serviceTakeawayDesc: "Pick up your order quickly and easily",
+                serviceDrivethru: "Drive-Thru",
+                serviceDrivethruDesc: "Quick service from your car",
+                serviceDinein: "Dine-In",
+                serviceDineinDesc: "Comfortable seating and family atmosphere",
+                menuTitle: "Menu",
+                locationTitle: "Our Location",
+                locationHeading: "Our Address",
+                locationAddress: "Riyadh, Saudi Arabia",
+                locationPhone: "📞",
+                locationEmail: "📧",
+                locationHours: "🕐 10:00 AM to 11:00 PM",
+                footerText: "© 2024 One Morqi. All rights reserved.",
+                footerPrivacy: "Privacy Policy",
+                footerTerms: "Terms of Use",
+                footerContact: "Contact Us",
+                allCategories: "All",
+                addToOrder: "Add to Order",
+                whatsappGreeting: "Hello 👋",
+                whatsappMessage: "I would like to order from One Morqi:",
+            }
+        };
+
+        // ============ GOOGLE SHEET CSV BACKEND (DATABASE) ============
+        // CRITICAL: Google Sheet (CSV) is acting as the ONLY backend/database
+        // NO hardcoded menu data is allowed
+        // NO mock data is allowed
+        // NO fallback menu items are allowed
+        // 
+        // CSV BACKEND URL (Published as CSV):
+        // https://docs.google.com/spreadsheets/d/e/2PACX-1vR9CCgVoTxqTX5V6ptr-k7QTrAi8tTsOU0kkrVsL5QY8K1t8J3E68eobsCcEESlMVpAhdAzDoZ37Egw/pub?output=csv
+        // 
+        // CSV COLUMNS (in exact order):
+        // 1. id
+        // 2. category_ar
+        // 3. category_en
+        // 4. name_ar
+        // 5. name_en
+        // 6. price
+        // 7. image
+        // 8. visible
+        // 
+        // HOW IT WORKS:
+        // 1. fetch() loads the CSV from Google Sheets
+        // 2. JavaScript parses CSV manually (line by line)
+        // 3. Each row becomes a menu item object
+        // 4. Only items with visible="Yes" are displayed
+        // 5. If CSV fails to load, ZERO items are shown (no fallback)
+        // 
+        // FOR RESTAURANT OWNER - HOW TO UPDATE MENU:
+        // 1. Open Google Sheet: https://docs.google.com/spreadsheets/d/e/2PACX-1vR9CCgVoTxqTX5V6ptr-k7QTrAi8tTsOU0kkrVsL5QY8K1t8J3E68eobsCcEESlMVpAhdAzDoZ37Egw/
+        // 2. Edit columns (A-H): id, category_ar, category_en, name_ar, name_en, price, image, visible
+        // 3. To add items: Add new row and fill all columns
+        // 4. To hide items: Set visible column to "No"
+        // 5. To update prices: Edit price column
+        // 6. To change images: Paste full image URL in image column
+        // 7. Leave image empty for default icon (🍽️)
+        // 8. Save sheet - website loads new data automatically
+        // 9. If changes don't appear, refresh browser (Ctrl+F5 or Cmd+Shift+R)
+        
+        const CSV_BACKEND_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR9CCgVoTxqTX5V6ptr-k7QTrAi8tTsOU0kkrVsL5QY8K1t8J3E68eobsCcEESlMVpAhdAzDoZ37Egw/pub?output=csv';
+        let menuData = [];
+
+        // ============ PARSE CSV DATA ============
+        // Manually parse CSV text into menu items array
+        // Handles quoted fields and commas within quotes
+        function parseCSV(csvText) {
+            try {
+                const lines = csvText.split('\n');
+                const parsedData = [];
+                
+                // Skip header row (row 0)
+                for (let i = 1; i < lines.length; i++) {
+                    const line = lines[i];
+                    if (!line || line.trim() === '') continue; // Skip empty lines
+                    
+                    // Parse CSV row (handle quoted fields)
+                    const fields = parseCSVLine(line);
+                    
+                    if (fields.length < 8) continue; // Skip incomplete rows
+                    
+                    // Extract fields from CSV
+                    const id = (fields[0] || '').trim();
+                    const categoryAr = (fields[1] || '').trim();
+                    const categoryEn = (fields[2] || '').trim();
+                    const nameAr = (fields[3] || '').trim();
+                    const nameEn = (fields[4] || '').trim();
+                    const price = (fields[5] || '').trim();
+                    const image = (fields[6] || '').trim();
+                    const visible = (fields[7] || '').trim();
+                    
+                    // Only add items marked as "Yes" in visible column (case-insensitive)
+                    if (visible && visible.toLowerCase() === 'yes') {
+                        const item = {
+                            id: id,
+                            category: categoryAr,
+                            categoryEn: categoryEn,
+                            name: nameAr,
+                            nameEn: nameEn,
+                            price: price,
+                            image: image,
+                            description: '',
+                            descriptionEn: ''
+                        };
+                        
+                        // Determine icon based on category (for fallback when image is empty)
+                        if (categoryAr.includes('مرقة') || categoryEn.toLowerCase().includes('morqi')) {
+                            item.icon = '🍲';
+                        } else if (categoryAr.includes('مقبلات') || categoryEn.toLowerCase().includes('starters')) {
+                            item.icon = '🍽️';
+                        } else if (categoryAr.includes('سلطات') || categoryEn.toLowerCase().includes('salads')) {
+                            item.icon = '🥗';
+                        } else if (categoryAr.includes('دجاج') || categoryEn.toLowerCase().includes('chicken')) {
+                            item.icon = '🍗';
+                        } else if (categoryAr.includes('بحري') || categoryEn.toLowerCase().includes('seafood')) {
+                            item.icon = '🐟';
+                        } else if (categoryAr.includes('أرز') || categoryEn.toLowerCase().includes('rice')) {
+                            item.icon = '🍚';
+                        } else if (categoryAr.includes('برياني') || categoryEn.toLowerCase().includes('biryani')) {
+                            item.icon = '🌲';
+                        } else if (categoryAr.includes('خبز') || categoryEn.toLowerCase().includes('bread')) {
+                            item.icon = '🍞';
+                        } else if (categoryAr.includes('عصير') || categoryEn.toLowerCase().includes('juice')) {
+                            item.icon = '🧃';
+                        } else if (categoryAr.includes('قهوة') || categoryEn.toLowerCase().includes('coffee')) {
+                            item.icon = '☕';
+                        } else if (categoryAr.includes('حلويات') || categoryEn.toLowerCase().includes('desserts')) {
+                            item.icon = '🍮';
+                        } else {
+                            item.icon = '🍽️';
+                        }
+                        
+                        parsedData.push(item);
+                    }
+                }
+                
+                console.log(`CSV parsed: ${parsedData.length} items loaded`);
+                return parsedData;
+            } catch (error) {
+                console.error('Error parsing CSV data:', error);
+                return [];
+            }
+        }
+
+        // ============ PARSE SINGLE CSV LINE ============
+        // Handles quoted fields and commas within quotes
+        function parseCSVLine(line) {
+            const result = [];
+            let current = '';
+            let insideQuotes = false;
+            
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                const nextChar = line[i + 1];
+                
+                if (char === '"') {
+                    if (insideQuotes && nextChar === '"') {
+                        // Escaped quote
+                        current += '"';
+                        i++;
+                    } else {
+                        // Toggle quote state
+                        insideQuotes = !insideQuotes;
+                    }
+                } else if (char === ',' && !insideQuotes) {
+                    // Field separator
+                    result.push(current);
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            
+            // Add last field
+            result.push(current);
+            
+            return result;
+        }
+
+        // ============ FETCH MENU DATA FROM CSV BACKEND ============
+        // Loads menu data from Google Sheet published as CSV
+        // This is the ONLY data source for menu items
+        // If CSV fails to load, NO menu items are displayed (no fallback)
+        async function loadMenuFromCSV() {
+            try {
+                console.log('Fetching CSV from:', CSV_BACKEND_URL);
+                
+                // Fetch CSV from Google Sheet backend
+                const response = await fetch(CSV_BACKEND_URL);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const csvText = await response.text();
+                
+                console.log('CSV fetched successfully, length:', csvText.length);
+                console.log('First 500 chars:', csvText.substring(0, 500));
+                
+                // Parse CSV and extract menu items
+                menuData = parseCSV(csvText);
+                
+                console.log(`Successfully loaded ${menuData.length} menu items from CSV backend`);
+                
+                if (menuData.length > 0) {
+                    console.log('First item:', menuData[0]);
+                }
+                
+                return menuData;
+            } catch (error) {
+                console.error('Error fetching menu from CSV backend:', error);
+                // NO fallback data - return empty array
+                return [];
+            }
+        }
+
+        // ============ CURRENT LANGUAGE STATE ============
+        let currentLanguage = 'ar';
+
+        // ============ INITIALIZE APPLICATION ============
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Initialize language first
+            initializeLanguage();
+            
+            // Load menu data from CSV backend (ONLY data source)
+            await loadMenuFromCSV();
+            
+            // Render menu UI (will be empty if CSV fails to load)
+            renderMenuFilters();
+            renderMenuItems();
+            
+            // Setup event listeners
+            setupEventListeners();
+        });
+
+        // ============ LANGUAGE SWITCHING FUNCTION ============
+        function initializeLanguage() {
+            // Set initial language from localStorage or default to Arabic
+            const savedLanguage = localStorage.getItem('language') || 'ar';
+            currentLanguage = savedLanguage;
+            applyLanguage(currentLanguage);
+        }
+
+        function applyLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+
+            // Update HTML lang attribute and direction
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+            // Update all text elements based on language
+            updateAllText(lang);
+
+            // Re-render menu with new language
+            renderMenuFilters();
+            renderMenuItems();
+        }
+
+        function updateAllText(lang) {
+            // Update all elements with data-i18n attributes
+            const t = translations[lang];
+            
+            document.getElementById('logo').textContent = t.logo;
+            document.getElementById('heroTitle').textContent = t.heroTitle;
+            document.getElementById('heroSubtitle').textContent = t.heroSubtitle;
+            document.getElementById('ctaButton').textContent = t.ctaButton;
+            document.getElementById('servicesTitle').textContent = t.servicesTitle;
+            document.getElementById('serviceDelivery').textContent = t.serviceDelivery;
+            document.getElementById('serviceDeliveryDesc').textContent = t.serviceDeliveryDesc;
+            document.getElementById('serviceTakeaway').textContent = t.serviceTakeaway;
+            document.getElementById('serviceTakeawayDesc').textContent = t.serviceTakeawayDesc;
+            document.getElementById('serviceDrivethru').textContent = t.serviceDrivethru;
+            document.getElementById('serviceDrivethruDesc').textContent = t.serviceDrivethruDesc;
+            document.getElementById('serviceDinein').textContent = t.serviceDinein;
+            document.getElementById('serviceDineinDesc').textContent = t.serviceDineinDesc;
+            document.getElementById('menuTitle').textContent = t.menuTitle;
+            document.getElementById('locationTitle').textContent = t.locationTitle;
+            document.getElementById('locationHeading').textContent = t.locationHeading;
+            document.getElementById('locationAddress').textContent = t.locationAddress;
+            document.getElementById('locationHours').textContent = t.locationHours;
+            document.getElementById('footerText').textContent = t.footerText;
+            document.getElementById('footerPrivacy').textContent = t.footerPrivacy;
+            document.getElementById('footerTerms').textContent = t.footerTerms;
+            document.getElementById('footerContact').textContent = t.footerContact;
+        }
+
+        // ============ LANGUAGE TOGGLE BUTTON ============
+        document.getElementById('languageToggle').addEventListener('click', function() {
+            const newLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
+            applyLanguage(newLanguage);
+            this.textContent = newLanguage === 'ar' ? 'EN | عربي' : 'AR | English';
+        });
+
+        // ============ MENU RENDERING FUNCTION ============
+        // Renders menu items from menuData array (loaded from CSV backend)
+        // If menuData is empty, displays zero items (no fallback)
+        function renderMenuItems(category = 'all') {
+            const menuGrid = document.getElementById('menuGrid');
+            menuGrid.innerHTML = '';
+
+            let filteredItems = menuData;
+            if (category !== 'all') {
+                filteredItems = menuData.filter(item => 
+                    currentLanguage === 'ar' ? item.category === category : item.categoryEn === category
+                );
+            }
+
+            // If no items, display nothing (no fallback menu)
+            if (filteredItems.length === 0) {
+                return;
+            }
+
+            filteredItems.forEach((item, index) => {
+                const menuItem = document.createElement('div');
+                menuItem.className = 'menu-item';
+                menuItem.style.animationDelay = `${index * 0.1}s`;
+
+                const itemName = currentLanguage === 'ar' ? item.name : item.nameEn;
+                const itemDesc = currentLanguage === 'ar' ? item.description : item.descriptionEn;
+                const itemPrice = item.price;
+                const buttonText = translations[currentLanguage].addToOrder;
+
+                // Create image element or fallback to icon
+                let imageHTML = '';
+                if (item.image && item.image.trim() !== '') {
+                    // Use actual image URL from CSV
+                    imageHTML = `<img src="${item.image}" alt="${itemName}" onerror="this.parentElement.innerHTML='<div class=\"menu-item-image-fallback\">${item.icon}</div>'">`;
+                } else {
+                    // Fallback to icon if no image URL in CSV
+                    imageHTML = `<div class="menu-item-image-fallback">${item.icon}</div>`;
+                }
+
+                menuItem.innerHTML = `
+                    <div class="menu-item-image">${imageHTML}</div>
+                    <div class="menu-item-content">
+                        <div class="menu-item-name">${itemName}</div>
+                        <div class="menu-item-description">${itemDesc}</div>
+                        <div class="menu-item-footer">
+                            <div class="menu-item-price">${itemPrice}</div>
+                            <button class="menu-item-btn" onclick="addToOrder('${itemName}', '${itemPrice}')">${buttonText}</button>
+                        </div>
+                    </div>
+                `;
+
+                menuGrid.appendChild(menuItem);
+            });
+        }
+
+        // ============ MENU FILTER RENDERING ============
+        function renderMenuFilters() {
+            const menuFilters = document.getElementById('menuFilters');
+            menuFilters.innerHTML = '';
+
+            if (menuData.length === 0) {
+                return; // Don't render filters if no data
+            }
+
+            // Get unique categories
+            const categories = ['all', ...new Set(menuData.map(item => 
+                currentLanguage === 'ar' ? item.category : item.categoryEn
+            ).filter(cat => cat && cat.trim() !== ''))];
+
+            categories.forEach(category => {
+                const button = document.createElement('button');
+                button.className = 'filter-btn';
+                if (category === 'all') button.classList.add('active');
+                
+                const displayText = category === 'all' ? 
+                    translations[currentLanguage].allCategories : category;
+                button.textContent = displayText;
+
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    // Render filtered menu
+                    renderMenuItems(category === 'all' ? 'all' : category);
+                });
+
+                menuFilters.appendChild(button);
+            });
+        }
+
+        // ============ ADD TO ORDER FUNCTION ============
+        function addToOrder(itemName, itemPrice) {
+            // This function handles adding items to order
+            // Currently opens WhatsApp with pre-filled message
+            const whatsappMessage = generateWhatsappMessage(itemName, itemPrice);
+            openWhatsapp(whatsappMessage);
+        }
+
+        // ============ WHATSAPP INTEGRATION ============
+        // WhatsApp Business API: https://wa.me/{phone_number}
+        // Phone number: 966562339793 (Saudi Arabia)
+        const WHATSAPP_PHONE = '966562339793';
+        const WHATSAPP_URL = `https://wa.me/${WHATSAPP_PHONE}`;
+
+        function generateWhatsappMessage(itemName, itemPrice) {
+            const t = translations[currentLanguage];
+            const message = `${t.whatsappGreeting}\n${t.whatsappMessage}\n\n${itemName} - ${itemPrice}`;
+            return encodeURIComponent(message);
+        }
+
+        function openWhatsapp(message = '') {
+            if (message) {
+                window.open(`${WHATSAPP_URL}?text=${message}`, '_blank');
+            } else {
+                window.open(WHATSAPP_URL, '_blank');
+            }
+        }
+
+        // ============ EVENT LISTENERS SETUP ============
+        function setupEventListeners() {
+            // CTA Button
+            document.getElementById('ctaButton').addEventListener('click', function(e) {
+                e.preventDefault();
+                openWhatsapp();
+            });
+
+            // Sticky WhatsApp Button
+            document.getElementById('stickyWhatsapp').addEventListener('click', function(e) {
+                e.preventDefault();
+                openWhatsapp();
+            });
+        }
+
+        // ============ SMOOTH SCROLL (Optional Enhancement) ============
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
